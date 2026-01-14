@@ -8,7 +8,7 @@ from tools import download_imgs, download_text
 def get_songs_name(api_key, args):
     url = "https://api.genius.com/search?q="
     headers = {
-    "Authorization": f"Bearer {api_key}",
+        "Authorization": f"Bearer {api_key}",
     }
     payload = {
         "q": args

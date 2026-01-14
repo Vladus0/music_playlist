@@ -2,12 +2,13 @@ import requests
 import os
 from dotenv import load_dotenv
 import argparse
+from tools import download_imgs, download_text
 
 
 def get_songs_info_id(api_key, args):
     url = f"https://api.genius.com/songs/{args}"
     headers = {
-    "Authorization": f"Bearer {api_key}",
+        "Authorization": f"Bearer {api_key}",
     }
     response = requests.get(url, headers=headers)
     response.raise_for_status()
@@ -18,6 +19,8 @@ def get_songs_info_id(api_key, args):
     song_img = song["header_image_thumbnail_url"]
     song_date = song["release_date_for_display"]
     print(f"Название: {song_title} \nМузыкант: {artist_name} \nСсылка на текст: {song_url} \nСсылка на изображение: {song_img} \nДата выхода: {song_date} \n")
+    download_imgs(song)
+    download_imgs(song)
 
 
 def main():
